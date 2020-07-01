@@ -1,0 +1,22 @@
+{
+  "name": "navy-notes",
+  "version": "1.0.0",
+  "description": "A web application for personal notes with user authentication.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samiur98/Navy-Notes.git"
+  },
+  "author": "Shah Samiur Rahman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samiur98/Navy-Notes/issues"
+  },
+  "homepage": "https://github.com/samiur98/Navy-Notes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
