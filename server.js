@@ -3,10 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const noteRoute = require('./routes/notes');
+const userRoute = require('./routes/users');
 const app = express();
 
 app.use(bodyParser.json());
 app.use('/notes', noteRoute);
+app.use('/users', userRoute);
 
 const port = 5000;
 
