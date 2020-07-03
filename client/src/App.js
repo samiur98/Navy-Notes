@@ -1,11 +1,15 @@
 import React from 'react';
+import Login from './components/Login.js';
 
-function App () {
-  return(
-    <div>
-      <h1>Placeholder</h1>
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return(
+      <div>
+        <Login />
+      </div>
+    );
+  }
 }
 
 export default App;

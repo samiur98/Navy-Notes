@@ -1,0 +1,80 @@
+body{
+    background-color: navy;
+}
+h1{
+    color: whitesmoke;
+    text-align: center;
+    position: relative;
+    top: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 140px;
+    border: solid 1px white;
+    width: 500px;
+    margin: auto;
+    cursor: default;
+}
+
+input [type=text] {
+    position: absolute;
+    top: 30px;
+}
+
+.inputField {
+    position: relative;
+    top: 200px;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.inputField input[type='text'] {
+    width: 400px;
+    height: 40px;
+    border: navy 1px solid;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    font-size: 27px;
+    color: darkblue;
+    font-family: 'Courier New', Courier, monospace;
+    font: bold;
+    text-align: center;
+}
+
+button {
+    position: relative;
+    top: 220px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    text-align: center;
+    width: 350px;
+    height: 60px;
+    border: 1px solid white;
+    background-color: navy;
+    color: whitesmoke;
+}
+
+button:hover{
+    background-color: whitesmoke;
+    color: navy;
+    cursor: pointer;
+}
+
+button:active{
+    background-color: navy;
+    color: whitesmoke;
+}
+
+p {
+    position: relative;
+    top: 230px;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+}
+
+p:hover{
+    text-decoration: underline;
+    color: lightblue;
+    cursor: pointer;
+}
