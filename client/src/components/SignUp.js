@@ -1,7 +1,7 @@
 import React from 'react';
 import UserPrompt from './UserPrompt';
 
-class Login extends React.Component {
+class SignUp extends React.Component {
     constructor() {
       super();
       this.state = {
@@ -34,16 +34,16 @@ class Login extends React.Component {
 
     render() {
       return(
-        <UserPrompt 
-        username = {this.state.username}
-        password = {this.state.password}
-        buttonText = "LOGIN"
-        linkText = "Sign Up"
-        onUserNameChange = {this.onUserNameChange}
-        onPasswordChange = {this.onPasswordChange}
+        <UserPrompt
+         username = {this.state.username}
+         password = {this.state.password}
+         buttonText = "SIGN UP"
+         linkText = "Login"
+         onUserNameChange = {this.onUserNameChange}
+         onPasswordChange = {this.onPasswordChange}
         />
       );
     }
 }
 
-  export default Login;
+export default SignUp;
