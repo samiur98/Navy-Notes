@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import UserPrompt from './UserPrompt';
 
 class Login extends React.Component {
@@ -39,7 +40,35 @@ class Login extends React.Component {
     }
 
     onButtonClick() {
-      console.log('Button Pressed');
+      const userName = this.state.username;
+      const password = this.state.password;
+      this.loginQuery(userName, password, this.props.history);
+    }
+
+    loginQuery(userName, password, history) {
+      axios({
+        method: 'post',
+        timeout: 5000,
+        url: 'http://localhost:5000/users/getUser',
+        data: {
+          userName: userName,
+          password: password,
+        }
+      }).then(res => {
+        if(res.status === 204) {
+          alert('Username and/or password is incorrect.');
+        } else {
+          // console.log(res);
+          history.push('/dashboard', res.data);
+        }
+      }).catch(error => {
+        console.log(error.response);
+        if (error.response.status === 403) {
+          alert('Username and/or password is incorrect.');
+        } else {
+          alert('Cannot perform login at this time, please try again later.');
+        }
+      });
     }
 
     render() {

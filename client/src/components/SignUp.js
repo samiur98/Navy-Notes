@@ -42,37 +42,34 @@ class SignUp extends React.Component {
     onButtonClick() {
       const userName = this.state.username;
       const password = this.state.password;
-      const validUserName = this.checkUserNameQuery(userName);
-
-      if (validUserName === 1) {
-        this.signUpQuery(userName, password);
+      if ((userName.length < 5) || (password.length < 8)) {
+        return;
       }
-      if (validUserName === 0) {
-        alert(`Username ${userName} taken, please consider another username.`);
-      }
+      this.checkUserNameQuery(userName, password, this.props.history);
     }
 
-    checkUserNameQuery(userName) {
+    checkUserNameQuery(userName, password, history) {
+      //console.log('processing...');
       axios({
         method: 'get',
         timeout: 5000,
-        url: `localhost:5000/users/userExists/${userName}`
+        url: `http://localhost:5000/users/userExists/${userName}`
       }).then(res => {
-        if(res.status === 404) {
-          return 1;
+        //console.log(res.status === 204);
+        if(res.status === 204) {
+          this.signUpQuery(userName, password, history);
         } else {
-          return 0;
+          alert(`Username ${userName} taken, please consider another username.`);
         }
       }).catch(error => {
-        alert('Sorry could not perform registration, please try again later');
-        return 2;
+        alert('Sorry could not perform registration, please try again later101');
       });
     }
 
-    signUpQuery(userName, password) {
+    signUpQuery(userName, password, history) {
       axios({
         method: 'post',
-        url: 'localhost:5000/users/addUser',
+        url: 'http://localhost:5000/users/addUser',
         timeout: 5000,
         data: {
           userName: userName,
@@ -84,16 +81,17 @@ class SignUp extends React.Component {
           return;
         }
         if (res.status === 500) {
-          alert('Sorry could not perform registration, please try again later');
+          alert('Sorry could not perform registration, please try again later102');
           return;
         }
         if (res.status === 201) {
           alert('User successfully registered!');
-          this.state.history.goBack();
+          history.goBack();
           return;
         }
       }).catch(error => {
-        alert('Sorry could not perform registration, please try again later');
+        console.log(error);
+        alert('Sorry could not perform registration, please try again later103');
       });
     }
 

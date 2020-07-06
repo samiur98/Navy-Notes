@@ -33,7 +33,7 @@ function decryptPassword(text) {
 }
 
 router.get('/userExists/:userName', (req, res) => {
-    // GET request that verifys that a user exists.
+    // GET request that verifys that a user exists. 
     const userName = req.params.userName;
     const sqlQuery = `SELECT * FROM users WHERE user_name = "${userName}";`
     userExistsQuery(res, sqlQuery);
@@ -49,7 +49,7 @@ function userExistsQuery(res, sqlQuery) {
             if(rows.length > 0) {
                 res.sendStatus(200);
             } else {
-                res.sendStatus(404);
+                res.sendStatus(204);
             }
         }
     });
@@ -92,7 +92,7 @@ function getUserRequest(res, sqlQuery, providedPassword) {
             return;
         }
         if (rows.length <= 0) {
-            res.sendStatus(404);
+            res.sendStatus(204);
             return;
         }
         const decryptedPassword = decryptPassword(rows[0].password);
