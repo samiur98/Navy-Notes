@@ -2,14 +2,16 @@ import React from 'react';
 import UserPrompt from './UserPrompt';
 
 class Login extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
         username: '',
         password: ''
       };
       this.onUserNameChange = this.onUserNameChange.bind(this);
       this.onPasswordChange = this.onPasswordChange.bind(this);
+      this.onLinkClick = this.onLinkClick.bind(this);
+      this.onButtonClick = this.onButtonClick.bind(this);
     }
     
     onUserNameChange(event) {
@@ -32,6 +34,14 @@ class Login extends React.Component {
       });
     }
 
+    onLinkClick() {
+      this.props.history.push('/signup');
+    }
+
+    onButtonClick() {
+      console.log('Button Pressed');
+    }
+
     render() {
       return(
         <UserPrompt 
@@ -41,6 +51,8 @@ class Login extends React.Component {
         linkText = "Sign Up"
         onUserNameChange = {this.onUserNameChange}
         onPasswordChange = {this.onPasswordChange}
+        onLinkClick = {this.onLinkClick}
+        onButtonClick = {this.onButtonClick}
         />
       );
     }

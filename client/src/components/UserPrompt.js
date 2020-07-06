@@ -32,8 +32,8 @@ function InputFields(props) {
 function Bottom(props) {
     return(
       <div className='bottom'>
-        <button>{props.buttonText}</button>
-        <p>{props.linkText}</p>
+        <button onClick={props.onButtonClick}>{props.buttonText}</button>
+        <p onClick={props.onLinkClick}>{props.linkText}</p>
       </div>
     );
   }
@@ -51,6 +51,8 @@ function UserPrompt(props) {
           <Bottom 
           buttonText = {props.buttonText}
           linkText = {props.linkText}
+          onLinkClick = {props.onLinkClick}
+          onButtonClick = {props.onButtonClick}
           />
         </div>
     );
