@@ -9,18 +9,55 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            placeholder: 0,
             userID: 14, //this.props.history.location.state.userID,
             userName: 'barney98', //this.props.history.location.state.user_name,
             password: 'jklchu', //this.props.history.location.state.password
-            delete: false
+            delete: false,
+            notes: [
+                {
+                    id: 3,
+                    title: 'cat'
+                },
+                {
+                    id: 7,
+                    title: 'dog'
+                },
+                {
+                    id: 9,
+                    title: 'parrot'
+                },
+                {
+                    id: 19,
+                    title: 'rabbit'
+                },
+                {
+                    id: 23,
+                    title: 'hamster'
+                },
+                {
+                    id: 24,
+                    title: 'cow'
+                },
+                {
+                    id: 25,
+                    title: 'tiger'
+                },
+                {
+                    id: 27,
+                    title: 'lion'
+                },
+                {
+                    id: 30,
+                    title: 'wolf'
+                }
+            ]
         }
         this.onDelete = this.onDelete.bind(this);
     }
 
-    getDeleteStyle() {
+    getButtonStyle(backgroundColor) {
         return {
-            'backgroundColor': 'navy',
+            'backgroundColor': backgroundColor,
             'color': 'white',
             'fontSize': 90,
             'borderRadius': 0,
@@ -46,35 +83,65 @@ class Dashboard extends React.Component {
     }
 
     getTop() {
+        let deleteBackgroundColor = 'navy';
+        if (this.state.delete) {
+            deleteBackgroundColor = 'tomato'
+        }
+
         return(
             <div className='top'>
                 <h1>{`${this.state.userName}'s Dashboard`}</h1>
-                <IconButton style={this.getDeleteStyle()} onClick={this.onDelete}>
+
+                <IconButton style={this.getButtonStyle(deleteBackgroundColor)} onClick={this.onDelete}>
                     <DeleteIcon />
                 </IconButton>
-                <IconButton style={this.getDeleteStyle()}>
+
+                <IconButton style={this.getButtonStyle('navy')}>
                     <AddBoxIcon />
                 </IconButton>
-                <IconButton style={this.getDeleteStyle()}>
+
+                <IconButton style={this.getButtonStyle('navy')}>
                     <AccountBoxIcon />
                 </IconButton>
             </div>
         );
     }
     
+    getNoteComponents() {
+        let deleteClass = '';
+        if (this.state.delete) {
+            deleteClass = 'delete';
+        }
+        const noteComponents = this.state.notes.map(note => {
+            return (
+                <div className={deleteClass}>
+                    <h2>{note.title}</h2>
+                </div>
+                
+            );
+        });
+        return noteComponents;
+    }
+
     getGrid() {
+        const noteComponents = this.getNoteComponents();
         return(
             <div className='grid-container'>
-
+                { noteComponents }
             </div>
         );
     }
 
     render() {
-        console.log(this.state.delete);
+        let deleteNote = '';
+        if (this.state.delete) {
+            deleteNote = 'Click on Note to Delete';
+        }
+
         return(
             <div>
                 {this.getTop()}
+                <p>{deleteNote}</p>
                 {this.getGrid()}
             </div>
         );
