@@ -24,7 +24,13 @@ function getNotesQuery(res, sqlQuery) {
         if (err) {
             res.sendStatus(500);
         } else {
-            res.send(rows);
+            const returnArray = rows.map(row => {
+                return {
+                    id: row.noteID,
+                    title: row.title
+                };
+            });
+            res.send(returnArray);
         }
     });
 }

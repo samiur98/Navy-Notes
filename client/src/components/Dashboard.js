@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import dummyList from '../dummyList.js';
+import axios from 'axios';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -18,6 +19,11 @@ class Dashboard extends React.Component {
         }
         this.onDelete = this.onDelete.bind(this);
         this.onAdd = this.onAdd.bind(this);
+    }
+
+    componentDidMount() {
+        console.log('Mounty');
+        this.getNotesQuery(this.state.userID, this.props.history);
     }
 
     getButtonStyle(backgroundColor) {
@@ -102,6 +108,29 @@ class Dashboard extends React.Component {
                 { noteComponents }
             </div>
         );
+    }
+
+    getNotesQuery(userID, history) {
+        const errorMessage = 'Data could not be recieved at this time, please try again later.'
+        axios({
+            method: 'get',
+            timeout: 5000,
+            url: `http://localhost:5000/notes/getNotes/${userID}`,
+        }).then(res => {
+            this.setState(prevState => {
+                return {
+                    userID: prevState.userID, 
+                    userName: prevState.userName, 
+                    password: prevState.password,
+                    delete: prevState.delete,
+                    notes: res.data
+                };
+            });
+        }).catch(error => {
+            console.error(error);
+            alert(errorMessage);
+            history.goBack();
+        });
     }
 
     render() {
