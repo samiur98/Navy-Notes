@@ -32,7 +32,6 @@ function Bottom(props) {
             <button onClick={props.onLeftButtonClick}>{props.leftButtonText}</button>
             <button onClick={props.onRightButtonClick}>{props.rightButtonText}</button>
         </div>
-        
     );
 }
 
@@ -47,7 +46,8 @@ function Note(props) {
             text = {props.text}
             onTextChange = {props.onTextChange}
             />
-            <Bottom 
+
+            <Bottom
             leftButtonText = {props.leftButtonText}
             rightButtonText = {props.rightButtonText}
             onLeftButtonClick = {props.onLeftButtonClick}

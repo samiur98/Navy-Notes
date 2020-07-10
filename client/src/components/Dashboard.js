@@ -4,6 +4,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import dummyList from '../dummyList.js';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -13,46 +14,10 @@ class Dashboard extends React.Component {
             userName: 'barney98', //this.props.history.location.state.user_name,
             password: 'jklchu', //this.props.history.location.state.password
             delete: false,
-            notes: [
-                {
-                    id: 3,
-                    title: 'cat'
-                },
-                {
-                    id: 7,
-                    title: 'dog'
-                },
-                {
-                    id: 9,
-                    title: 'parrot'
-                },
-                {
-                    id: 19,
-                    title: 'rabbit'
-                },
-                {
-                    id: 23,
-                    title: 'hamster'
-                },
-                {
-                    id: 24,
-                    title: 'cow'
-                },
-                {
-                    id: 25,
-                    title: 'tiger'
-                },
-                {
-                    id: 27,
-                    title: 'lion'
-                },
-                {
-                    id: 30,
-                    title: 'wolf'
-                }
-            ]
+            notes: dummyList
         }
         this.onDelete = this.onDelete.bind(this);
+        this.onAdd = this.onAdd.bind(this);
     }
 
     getButtonStyle(backgroundColor) {
@@ -82,6 +47,13 @@ class Dashboard extends React.Component {
         });
     }
 
+    onAdd() {
+        const data = {
+            userID: this.state.userID
+        }
+        this.props.history.push('/newnote', data);
+    }
+
     getTop() {
         let deleteBackgroundColor = 'navy';
         if (this.state.delete) {
@@ -96,7 +68,7 @@ class Dashboard extends React.Component {
                     <DeleteIcon />
                 </IconButton>
 
-                <IconButton style={this.getButtonStyle('navy')}>
+                <IconButton style={this.getButtonStyle('navy')} onClick={this.onAdd}>
                     <AddBoxIcon />
                 </IconButton>
 
@@ -114,7 +86,7 @@ class Dashboard extends React.Component {
         }
         const noteComponents = this.state.notes.map(note => {
             return (
-                <div className={deleteClass}>
+                <div className={deleteClass} key={note.id}>
                     <h2>{note.title}</h2>
                 </div>
                 
