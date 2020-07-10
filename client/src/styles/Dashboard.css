@@ -1,0 +1,39 @@
+body{
+    background-color: white;
+}
+
+h1{
+    color: white;
+    background-color: navy;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 45px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 750px;
+    height: 90px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 50px;
+}
+
+.flex-container{
+    display: flex;
+    background-color: navy;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 200px;
+}
+
+.top{
+    background-color: navy;
+    height: 170px;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}

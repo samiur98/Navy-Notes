@@ -49,13 +49,11 @@ class SignUp extends React.Component {
     }
 
     checkUserNameQuery(userName, password, history) {
-      //console.log('processing...');
       axios({
         method: 'get',
         timeout: 5000,
         url: `http://localhost:5000/users/userExists/${userName}`
       }).then(res => {
-        //console.log(res.status === 204);
         if(res.status === 204) {
           this.signUpQuery(userName, password, history);
         } else {
