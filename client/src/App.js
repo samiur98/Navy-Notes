@@ -1,11 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from './components/Login.js';
-import SignUp from './components/SignUp.js'
-import Dashboard from './components/Dashboard.js';
-import NewNote from './components/NewNote.js';
-import ExistingNote from './components/ExistingNote.js';
-import Note from './components/Note.js'
+import Login from './components/UserPrompt/Login.js';
+import SignUp from './components/UserPrompt/SignUp.js'
+import Dashboard from './components/Dashboard/Dashboard.js';
+import NewNote from './components/Note/NewNote.js';
+import ExistingNote from './components/Note/ExistingNote.js';
 // import NewNote from './components/NewNote.js'
 // import Te from './components/Te.js'
 
@@ -15,7 +14,7 @@ class App extends React.Component {
     return(
       <div>
         <Switch>
-          <Route component = {Dashboard} exact path = '/'/>
+          <Route component = {Login} exact path = '/'/>
           <Route component = {SignUp} exact path = '/signup'/>
           <Route component = {Dashboard} exact path = '/dashboard' />
           <Route component = {NewNote} exact path = '/newnote' />

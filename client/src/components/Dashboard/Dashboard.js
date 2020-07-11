@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Dashboard.css'
+import './Dashboard.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -79,7 +79,7 @@ class Dashboard extends React.Component {
         }
 
         return(
-            <div className='top'>
+            <div className='dashboard-top'>
                 <h1>{`${this.state.userName}'s Dashboard`}</h1>
 
                 <IconButton style={this.getButtonStyle(deleteBackgroundColor)} onClick={this.onDelete}>
@@ -98,9 +98,9 @@ class Dashboard extends React.Component {
     }
     
     getNoteComponents() {
-        let deleteClass = '';
+        let deleteClass = 'dashboard';
         if (this.state.delete) {
-            deleteClass = 'delete';
+            deleteClass = 'dashboard-delete';
         }
         const noteComponents = this.state.notes.map(note => {
             return (
@@ -116,7 +116,7 @@ class Dashboard extends React.Component {
     getGrid() {
         const noteComponents = this.getNoteComponents();
         return(
-            <div className='grid-container'>
+            <div className='dashboard-grid-container'>
                 { noteComponents }
             </div>
         );
@@ -188,7 +188,7 @@ class Dashboard extends React.Component {
         }
 
         return(
-            <div>
+            <div className='dashboard'>
                 {this.getTop()}
                 <p>{deleteNote}</p>
                 {this.getGrid()}

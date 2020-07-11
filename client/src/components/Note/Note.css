@@ -1,8 +1,8 @@
-body{
+.note body{
     background-color: whitesmoke;
 }
 
-input[type=text] {
+.note input[type=text] {
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     font-weight: bold;
@@ -15,14 +15,14 @@ input[type=text] {
     border-top: solid 2px navy;
 }
 
-.title{
+.note-title{
     position: fixed;
     top:0px;
     left:0px;
     width: 100%;
 }
 
-textarea{
+.note textarea{
     position: fixed;
     top: 65px;
     left: 0px;
@@ -36,12 +36,12 @@ textarea{
     border-bottom: solid 2px navy;
 }
 
-.bottom {
+.note-bottom {
     position: relative;
-    top: 500px;
+    top: 720px;
 }
 
-button{
+.note button{
     width: 50%;
     height: 100px;
     border: 3px solid white;
@@ -52,14 +52,14 @@ button{
     font-size: 30px;
 }
 
-button:hover{
+.note button:hover{
     border: 3px solid navy;
     background-color: white;
     color: navy;
     cursor: pointer;
 }
 
-button:active{
+.note button:active{
     border: 3px solid white;
     background-color: navy;
     color: white;

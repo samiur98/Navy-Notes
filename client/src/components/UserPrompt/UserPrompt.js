@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/UserPrompt.css';
+import './UserPrompt.css';
 
 function InputFields(props) {
     let userNameMessage = '';
@@ -12,7 +12,7 @@ function InputFields(props) {
     }
 
     return(
-      <form className='inputField'>
+      <form className='userprompt-inputField'>
         <p>{userNameMessage}</p>
         <input 
         type='text' 
@@ -31,7 +31,7 @@ function InputFields(props) {
 
 function Bottom(props) {
     return(
-      <div className='bottom'>
+      <div className='userprompt-bottom'>
         <button onClick={props.onButtonClick}>{props.buttonText}</button>
         <p onClick={props.onLinkClick}>{props.linkText}</p>
       </div>
@@ -40,7 +40,7 @@ function Bottom(props) {
 
 function UserPrompt(props) {
     return (
-        <div>
+        <div className='userprompt'>
           <h1>Navy Notes</h1>
           <InputFields 
           username = {props.username}

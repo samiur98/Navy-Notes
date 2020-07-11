@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/Note.css'
+import './Note.css';
 
 function Title(props) {
     return(
-        <div className='title'>
+        <div className='note-title'>
             <input 
             type = 'text'
             placeholder = 'Title'
@@ -28,7 +28,7 @@ function Text(props) {
 
 function Bottom(props) {
     return(
-        <div className='bottom'>
+        <div className='note-bottom'>
             <button onClick={props.onLeftButtonClick}>{props.leftButtonText}</button>
             <button onClick={props.onRightButtonClick}>{props.rightButtonText}</button>
         </div>
@@ -37,7 +37,7 @@ function Bottom(props) {
 
 function Note(props) {
     return(
-        <div>
+        <div className='note'>
             <Title 
             title = {props.title}
             onTitleChange = {props.onTitleChange}

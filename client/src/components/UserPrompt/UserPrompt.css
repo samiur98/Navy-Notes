@@ -1,7 +1,12 @@
-body{
+.userprompt {
+    width: 100%;
+    height: 1000px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     background-color: navy;
 }
-h1{
+.userprompt h1{
     color: whitesmoke;
     text-align: center;
     position: relative;
@@ -14,12 +19,12 @@ h1{
     cursor: default;
 }
 
-input [type=text] {
+.userprompt input [type=text] {
     position: absolute;
     top: 30px;
 }
 
-.inputField {
+.userprompt-inputField {
     position: relative;
     top: 200px;
     width: 500px;
@@ -27,7 +32,7 @@ input [type=text] {
     text-align: center;
 }
 
-.inputField input[type='text'], input[type='password']{
+.userprompt-inputField input[type='text'], input[type='password']{
     width: 400px;
     height: 40px;
     border: navy 1px solid;
@@ -40,7 +45,7 @@ input [type=text] {
     text-align: center;
 }
 
-button {
+.userprompt button {
     position: relative;
     top: 220px;
     font-weight: bold;
@@ -54,22 +59,22 @@ button {
     color: whitesmoke;
 }
 
-button:hover{
+.userprompt button:hover{
     background-color: whitesmoke;
     color: navy;
     cursor: pointer;
 }
 
-button:active{
+.userprompt button:active{
     background-color: navy;
     color: whitesmoke;
 }
 
-.bottom {
+.userprompt-bottom {
     text-align: center;
 }
 
-.bottom p {
+.userprompt-bottom p {
     position: relative;
     top: 230px;
     color: whitesmoke;
@@ -77,18 +82,18 @@ button:active{
     font-size: 22px;
 }
 
-.bottom p:hover{
+.userprompt-bottom p:hover{
     text-decoration: underline;
     color: lightblue;
     cursor: pointer;
 }
 
-.bottom p:active{
+.userprompt-bottom p:active{
     text-decoration: none;
     color: whitesmoke;
 }
 
-.inputField p {
+.userprompt-inputField p {
     font-size: 17px;
     position: relative;
     top: 10px;
