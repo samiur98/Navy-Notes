@@ -11,14 +11,17 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userID: 14, //this.props.history.location.state.userID,
-            userName: 'barney98', //this.props.history.location.state.user_name,
-            password: 'jklchu', //this.props.history.location.state.password
+            userID: this.props.history.location.state.userID,
+            userName: this.props.history.location.state.user_name,
+            password: this.props.history.location.state.password,
             delete: false,
+            userInfo: false,
             notes: []
         }
         this.onDelete = this.onDelete.bind(this);
         this.onAdd = this.onAdd.bind(this);
+        this.onUserInfo = this.onUserInfo.bind(this);
+        this.onSignOut = this.onSignOut.bind(this);
         this.onNoteClick = this.onNoteClick.bind(this);
     }
 
@@ -49,7 +52,9 @@ class Dashboard extends React.Component {
                 userID: prevState.userID,
                 userName: prevState.userName,
                 password: prevState.password,
-                delete: !prevState.delete
+                delete: !prevState.delete,
+                userInfo: prevState.userInfo,
+                notes: prevState.notes
             };
         });
     }
@@ -59,6 +64,23 @@ class Dashboard extends React.Component {
             userID: this.state.userID
         };
         this.props.history.push('/newnote', data);
+    }
+
+    onUserInfo() {
+        this.setState(prevState => {
+            return{
+                userID: prevState.userID,
+                userName: prevState.userName,
+                password: prevState.password,
+                delete: prevState.delete,
+                userInfo: !prevState.userInfo,
+                notes: prevState.notes
+            };
+        });
+    }
+
+    onSignOut() {
+        this.props.history.goBack();
     }
 
     onNoteClick(noteID) {
@@ -74,8 +96,12 @@ class Dashboard extends React.Component {
 
     getTop() {
         let deleteBackgroundColor = 'navy';
+        let userBackgroundColor = 'navy';
         if (this.state.delete) {
             deleteBackgroundColor = 'tomato'
+        }
+        if (this.state.userInfo) {
+            userBackgroundColor = 'lightblue';
         }
 
         return(
@@ -90,13 +116,27 @@ class Dashboard extends React.Component {
                     <AddBoxIcon />
                 </IconButton>
 
-                <IconButton style={this.getButtonStyle('navy')}>
+                <IconButton style={this.getButtonStyle(userBackgroundColor)} onClick={this.onUserInfo}>
                     <AccountBoxIcon />
                 </IconButton>
             </div>
         );
     }
-    
+
+    getUserOptions() {
+        if(!this.state.userInfo) {
+            return(
+                <div></div>
+            );
+        }
+        return(
+            <div className='dashboard-user'>
+                <p>Change Password</p>
+                <p onClick={this.onSignOut}>Sign Out</p>
+            </div>
+        );
+    }
+
     getNoteComponents() {
         let deleteClass = 'dashboard';
         if (this.state.delete) {
@@ -135,6 +175,7 @@ class Dashboard extends React.Component {
                     userName: prevState.userName, 
                     password: prevState.password,
                     delete: prevState.delete,
+                    userInfo: prevState.userInfo,
                     notes: res.data
                 };
             });
@@ -176,6 +217,7 @@ class Dashboard extends React.Component {
                 userName: prevState.userName,
                 password: prevState.password,
                 delete: prevState.delete,
+                userInfo: prevState.userInfo,
                 notes: newNotes
             };
         });
@@ -190,6 +232,7 @@ class Dashboard extends React.Component {
         return(
             <div className='dashboard'>
                 {this.getTop()}
+                {this.getUserOptions()}
                 <p>{deleteNote}</p>
                 {this.getGrid()}
             </div>

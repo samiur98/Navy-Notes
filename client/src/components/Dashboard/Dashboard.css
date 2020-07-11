@@ -38,7 +38,6 @@
 
 .dashboard-grid-container{
     background-color: white;
-    
     width: 1500px;
     position: relative;
     top: 190px;
@@ -93,4 +92,17 @@
 .dashboard-delete h2:active{
     background-color: tomato;
     color: white;
+}
+
+.dashboard-user p {
+    color: navy;
+    cursor: pointer;
+}
+
+.dashboard-user p:hover{
+    text-decoration: underline;
+}
+
+.dashboard-user p:active{
+    color: lightblue;
 }
