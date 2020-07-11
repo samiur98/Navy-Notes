@@ -57,7 +57,7 @@ function getNoteQuery(res, sqlQuery) {
                 res.sendStatus(404);
             }
             else {
-                res.send(rows);
+                res.send(rows[0]);
             }
         }
     });

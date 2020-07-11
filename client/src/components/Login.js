@@ -58,7 +58,6 @@ class Login extends React.Component {
         if(res.status === 204) {
           alert('Username and/or password is incorrect.');
         } else {
-          // console.log(res);
           history.push('/dashboard', res.data);
         }
       }).catch(error => {
