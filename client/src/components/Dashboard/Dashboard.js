@@ -1,11 +1,6 @@
 import React from 'react';
-import './Dashboard.css';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-// import dummyList from '../dummyList.js';
 import axios from 'axios';
+import DashBoardView from './DashBoardView.js';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -27,24 +22,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        console.log('Mounty');
         this.getNotesQuery(this.state.userID, this.props.history);
-    }
-
-    getButtonStyle(backgroundColor) {
-        return {
-            'backgroundColor': backgroundColor,
-            'color': 'white',
-            'fontSize': 90,
-            'borderRadius': 0,
-            'border': '1px solid white',
-            'position': 'relative',
-            'left': 750,
-            'top': 0,
-            'height': 142,
-            'width': '16%',
-            'margin': 0
-        };
     }
 
     onDelete() {
@@ -100,74 +78,6 @@ class Dashboard extends React.Component {
         } else {
             this.props.history.push('/existingnote', data);
         }
-    }
-
-    getTop() {
-        let deleteBackgroundColor = 'navy';
-        let userBackgroundColor = 'navy';
-        if (this.state.delete) {
-            deleteBackgroundColor = 'tomato'
-        }
-        if (this.state.userInfo) {
-            userBackgroundColor = 'lightblue';
-        }
-
-        return(
-            <div className='dashboard-top'>
-                <h1>{`${this.state.userName}'s Dashboard`}</h1>
-
-                <IconButton style={this.getButtonStyle(deleteBackgroundColor)} onClick={this.onDelete}>
-                    <DeleteIcon />
-                </IconButton>
-
-                <IconButton style={this.getButtonStyle('navy')} onClick={this.onAdd}>
-                    <AddBoxIcon />
-                </IconButton>
-
-                <IconButton style={this.getButtonStyle(userBackgroundColor)} onClick={this.onUserInfo}>
-                    <AccountBoxIcon />
-                </IconButton>
-            </div>
-        );
-    }
-
-    getUserOptions() {
-        if(!this.state.userInfo) {
-            return(
-                <div></div>
-            );
-        }
-        return(
-            <div className='dashboard-user'>
-                <p onClick={this.onPasswordChange}>Change Password</p>
-                <p onClick={this.onSignOut}>Sign Out</p>
-            </div>
-        );
-    }
-
-    getNoteComponents() {
-        let deleteClass = 'dashboard';
-        if (this.state.delete) {
-            deleteClass = 'dashboard-delete';
-        }
-        const noteComponents = this.state.notes.map(note => {
-            return (
-                <div className={deleteClass} key={note.id} onClick={() => this.onNoteClick(note.id)}>
-                    <h2>{note.title}</h2>
-                </div>
-                
-            );
-        });
-        return noteComponents;
-    }
-
-    getGrid() {
-        const noteComponents = this.getNoteComponents();
-        return(
-            <div className='dashboard-grid-container'>
-                { noteComponents }
-            </div>
-        );
     }
 
     getNotesQuery(userID, history) {
@@ -232,17 +142,20 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        let deleteNote = '';
-        if (this.state.delete) {
-            deleteNote = 'Click on Note to Delete';
-        }
-
         return(
-            <div className='dashboard'>
-                {this.getTop()}
-                {this.getUserOptions()}
-                <p>{deleteNote}</p>
-                {this.getGrid()}
+            <div>
+                <DashBoardView 
+                delete={this.state.delete}
+                userInfo={this.state.userInfo}
+                userName={this.state.userName}
+                notes={this.state.notes}
+                onAdd={this.onAdd}
+                onUserInfo={this.onUserInfo}
+                onDelete={this.onDelete}
+                onNoteClick={this.onNoteClick}
+                onPasswordChange={this.onPasswordChange}
+                onSignOut={this.onSignOut}
+                />
             </div>
         );
     }
