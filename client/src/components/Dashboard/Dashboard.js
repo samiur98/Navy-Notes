@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
         this.onAdd = this.onAdd.bind(this);
         this.onUserInfo = this.onUserInfo.bind(this);
         this.onSignOut = this.onSignOut.bind(this);
+        this.onPasswordChange = this.onPasswordChange.bind(this);
         this.onNoteClick = this.onNoteClick.bind(this);
     }
 
@@ -83,6 +84,14 @@ class Dashboard extends React.Component {
         this.props.history.goBack();
     }
 
+    onPasswordChange() {
+        const data = {
+            userID: this.state.userID,
+            userName: this.state.userName
+        };
+        this.props.history.push('/passwordchange', data);
+    }
+
     onNoteClick(noteID) {
         const data = {
             noteID: noteID
@@ -131,7 +140,7 @@ class Dashboard extends React.Component {
         }
         return(
             <div className='dashboard-user'>
-                <p>Change Password</p>
+                <p onClick={this.onPasswordChange}>Change Password</p>
                 <p onClick={this.onSignOut}>Sign Out</p>
             </div>
         );
