@@ -52,7 +52,7 @@ class PasswordChange extends React.Component {
         axios({
             method: 'post',
             timeout: 5000,
-            url: 'http://localhost:5000/users/getUser',
+            url: '/users/getUser',
             data: {
                 userName: userName,
                 password: oldPassword
@@ -78,7 +78,7 @@ class PasswordChange extends React.Component {
         axios({
             method: 'post',
             timeout: 5000,
-            url: 'http://localhost:5000/users/updateUser',
+            url: '/users/updateUser',
             data: {
                 userName: userName,
                 password: password

@@ -52,7 +52,7 @@ class SignUp extends React.Component {
       axios({
         method: 'get',
         timeout: 5000,
-        url: `http://localhost:5000/users/userExists/${userName}`
+        url: `/users/userExists/${userName}`
       }).then(res => {
         if(res.status === 204) {
           this.signUpQuery(userName, password, history);
@@ -67,7 +67,7 @@ class SignUp extends React.Component {
     signUpQuery(userName, password, history) {
       axios({
         method: 'post',
-        url: 'http://localhost:5000/users/addUser',
+        url: '/users/addUser',
         timeout: 5000,
         data: {
           userName: userName,

@@ -55,7 +55,7 @@ class ExistingNote extends React.Component {
         axios({
             method: 'get',
             timeout: 5000,
-            url: `http://localhost:5000/notes/getNote/${noteID}`
+            url: `/notes/getNote/${noteID}`
         }).then(res => {
             this.setState(prevState => {
                 return{

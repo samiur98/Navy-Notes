@@ -85,7 +85,7 @@ class Dashboard extends React.Component {
         axios({
             method: 'get',
             timeout: 5000,
-            url: `http://localhost:5000/notes/getNotes/${userID}`,
+            url: `/notes/getNotes/${userID}`,
         }).then(res => {
             this.setState(prevState => {
                 return {
@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
         axios({
            method: 'delete',
            timeout: 5000,
-           url: `http://localhost:5000/notes/deleteNote/${noteID}` 
+           url: `/notes/deleteNote/${noteID}` 
         }).then(res => {
             if(res.status === 200) {
                 this.updateDeletedNotes(noteID);
