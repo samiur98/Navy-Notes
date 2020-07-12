@@ -14,7 +14,6 @@ class PasswordChange extends React.Component {
         this.onNewPasswordChange = this.onNewPasswordChange.bind(this);
         this.onLinkClick = this.onLinkClick.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
-        console.log(this.state);
     }
 
     onOldPasswordChange(event) {

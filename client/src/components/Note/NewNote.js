@@ -55,7 +55,6 @@ class NewNote extends React.Component {
         }
         const successMessage = 'Note Successfully added.'
         const failureMessage = 'Note could not be added at this point, please try again later.'
-        // console.log(body);
         axios({
             method: 'post',
             timeout: 5000,

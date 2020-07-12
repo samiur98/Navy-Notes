@@ -40,7 +40,7 @@ class Dashboard extends React.Component {
 
     onAdd() {
         const data = {
-            userID: this.state.userID
+            userID: this.state.userID,
         };
         this.props.history.push('/newnote', data);
     }
@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
 
     onPasswordChange() {
         const data = {
-            userName: this.state.userName
+            userName: this.state.userName,
         };
         this.props.history.push('/passwordchange', data);
     }
