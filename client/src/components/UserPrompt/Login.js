@@ -42,6 +42,9 @@ class Login extends React.Component {
     onButtonClick() {
       const userName = this.state.username;
       const password = this.state.password;
+      if ((userName.length < 5) || (password.length < 8)) {
+        return;
+      }
       this.loginQuery(userName, password, this.props.history);
     }
 
@@ -61,7 +64,7 @@ class Login extends React.Component {
           history.push('/dashboard', res.data);
         }
       }).catch(error => {
-        console.log(error.response);
+        console.error(error);
         if (error.response.status === 403) {
           alert('Username and/or password is incorrect.');
         } else {

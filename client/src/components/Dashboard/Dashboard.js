@@ -86,7 +86,6 @@ class Dashboard extends React.Component {
 
     onPasswordChange() {
         const data = {
-            userID: this.state.userID,
             userName: this.state.userName
         };
         this.props.history.push('/passwordchange', data);
