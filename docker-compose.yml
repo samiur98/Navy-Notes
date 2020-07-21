@@ -1,0 +1,24 @@
+version: '3'
+services:
+    client:
+        container_name: client
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        image: samiur98/navy-notes-client
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+        stdin_open: true
+        tty: true
+    server:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        image: samiur98/navy-notes-server
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./server:/usr/src/app
