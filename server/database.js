@@ -6,14 +6,14 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
   host: process.env.HOST,
   user: process.env.USERNAME,
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   multipleStatements: true,
 });
-
+/*
 connection.connect((err) => {
     if(err) {
         console.log(err);
@@ -23,6 +23,6 @@ connection.connect((err) => {
         console.log('Connection to Database successfull.');
         return 0;
     }
-});
+}); */ 
 
 module.exports = connection;
