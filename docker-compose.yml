@@ -7,7 +7,7 @@ services:
             dockerfile: Dockerfile
         image: samiur98/navy-notes-client
         ports:
-            - "3000:3000"
+            - "80:3000"
         volumes:
             - ./client:/usr/src/app
         stdin_open: true
