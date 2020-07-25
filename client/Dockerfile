@@ -8,6 +8,8 @@ RUN npm install
 
 RUN npm install -g react-scripts
 
+RUN npm install -g axios
+
 COPY . .
 
 EXPOSE 3000
