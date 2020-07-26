@@ -82,7 +82,7 @@ class ExistingNote extends React.Component {
         axios({
             method: 'post',
             timeout: 5000,
-            url: 'http://localhost:5000/notes/updateNote',
+            url: '/notes/updateNote',
             data: body
         }).then(res => {
             if(res.status === 200) {
